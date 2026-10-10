@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lens OCR — Result</title>
+<link rel="stylesheet" href="viewer.css">
+<script src="lib/tesseract.min.js"></script>
+</head>
+<body>
+<header>
+  <div class="h-left"><span class="dot">◉</span> <b>Lens OCR</b> <span id="srcLabel" class="src"></span></div>
+  <div class="h-right">
+    <select id="lang" title="OCR language">
+      <option value="auto" selected>Auto-detect</option>
+      <option value="eng">English</option>
+      <option value="fra">French</option>
+      <option value="spa">Spanish</option>
+      <option value="deu">German</option>
+      <option value="hin">Hindi</option>
+      <option value="ara">Arabic</option>
+      <option value="chi_sim">Chinese (Simp)</option>
+      <option value="jpn">Japanese</option>
+    </select>
+    <span id="detectedLabel" class="src"></span>
+    <label class="chk"><input type="checkbox" id="overlayToggle" checked> boxes</label>
+    <button id="btnCopy">Copy text</button>
+    <button id="btnDownload">Download .txt</button>
+    <button id="btnRetry">Re-run OCR</button>
+  </div>
+</header>
+
+<div id="progressWrap"><div id="progressBar"></div><div id="progressText">Loading…</div></div>
+
+<main>
+  <section class="img-pane">
+    <div id="imgWrap">
+      <img id="img" alt="OCR source">
+      <div id="overlay"></div>
+    </div>
+    <div class="hint">Drag over the text in the image to select &amp; copy — or click a box to copy that word. Full text is on the right.</div>
+  </section>
+  <section class="text-pane">
+    <h3>Extracted text</h3>
+    <pre id="fullText" tabindex="0">Waiting for OCR…</pre>
+    <h3>Words (<span id="wordCount">0</span>)</h3>
+    <div id="words"></div>
+  </section>
+</main>
+
+<script src="viewer.js"></script>
+</body>
+</html>

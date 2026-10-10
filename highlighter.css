@@ -1,0 +1,53 @@
+/* Floating highlight toolbar + highlight styles (like screenshot) */
+#nw-hl-toolbar {
+  position: absolute;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1e1e22;
+  border-radius: 999px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35);
+  font-family: system-ui, sans-serif;
+}
+#nw-hl-toolbar button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#nw-hl-toolbar .nw-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+#nw-hl-toolbar .nw-dot:hover { border-color: #fff; transform: scale(1.1); }
+#nw-hl-toolbar .nw-dot[data-color="pink"] { background: #ff8fa3; }
+#nw-hl-toolbar .nw-dot[data-color="yellow"] { background: #ffe45e; }
+#nw-hl-toolbar .nw-dot[data-color="green"] { background: #7bf1a8; }
+#nw-hl-toolbar .nw-dot[data-color="blue"] { background: #a9d6ff; }
+#nw-hl-toolbar .nw-sep { width: 1px; height: 20px; background: #444; }
+#nw-hl-toolbar .nw-icon {
+  color: #ddd;
+  font-size: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+#nw-hl-toolbar .nw-icon:hover { background: #333; color: #fff; }
+#nw-hl-toolbar .nw-icon svg { display: block; }
+
+.nw-hl {
+  border-radius: 2px;
+  padding: 0 1px;
+  cursor: pointer;
+}
+.nw-hl[data-color="pink"] { background: rgba(255,143,163,.55); }
+.nw-hl[data-color="yellow"] { background: rgba(255,228,94,.7); }
+.nw-hl[data-color="green"] { background: rgba(123,241,168,.55); }
+.nw-hl[data-color="blue"] { background: rgba(169,214,255,.6); }

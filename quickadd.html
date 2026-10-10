@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Save to Notes &amp; Words</title>
+<link rel="stylesheet" href="popup.css" />
+<style>body{width:auto;min-width:320px}h2{font-size:14px}</style>
+</head>
+<body>
+<h2 id="qaTitle">Save selection</h2>
+<p id="qaText" style="background:#f5f5f5;border-radius:6px;padding:6px;white-space:pre-wrap;word-break:break-word;max-height:120px;overflow:auto"></p>
+<p id="qaUrl" style="font-size:11px;color:#888;word-break:break-all"></p>
+<form id="qaForm">
+  <div id="qa-note-fields">
+    <input id="qaNoteTitle" placeholder="Note title (optional)" maxlength="120" />
+    <textarea id="qaDescription" placeholder="Description (optional)..." rows="3"></textarea>
+  </div>
+  <div id="qa-word-fields" hidden>
+    <input id="qaWordTerm" placeholder="Word" maxlength="120" />
+    <input id="qaWordMeaning" placeholder="Meaning / description" maxlength="300" />
+    <textarea id="qaWordExample" placeholder="Example (optional)" rows="2"></textarea>
+    <textarea id="qaWordDescription" placeholder="Description (optional)..." rows="2"></textarea>
+  </div>
+  <input id="qaTags" placeholder="tags: comma separated" maxlength="200" />
+  <div class="row">
+    <button type="submit" id="saveBtn">Save</button>
+  </div>
+</form>
+<script src="quickadd.js"></script>
+</body>
+</html>

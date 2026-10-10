@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OCR + Notes</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<nav class="top-tabs">
+  <button id="top-ocr" class="active">◉ OCR</button>
+  <button id="top-notes">Notes &amp; Words</button>
+</nav>
+
+<!-- ============ OCR view (from extension 1) ============ -->
+<section id="view-ocr">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">◉</div>
+      <div>
+        <div class="title">Lens OCR</div>
+        <div class="sub">Select text from any image</div>
+      </div>
+    </div>
+
+    <button id="btnUpload" class="btn primary">📤 Upload image</button>
+    <input type="file" id="fileInput" accept="image/*" hidden>
+
+    <button id="btnShot" class="btn">📸 Capture visible tab</button>
+    <button id="btnRegion" class="btn">✂️ Select region &amp; OCR</button>
+    <button id="btnCopyRegion" class="btn">📋 Copy selected region</button>
+
+    <div class="row">
+      <input id="urlInput" type="url" placeholder="Paste image URL…">
+      <button id="btnUrl" class="btn small">Go</button>
+    </div>
+
+    <div class="tip">Tip: right-click any image → <b>Extract text from this image</b></div>
+    <div id="status" class="status"></div>
+  </div>
+</section>
+
+<!-- ============ Notes view (from extension 2) ============ -->
+<section id="view-notes" hidden>
+  <header>
+    <h1>Notes &amp; Words</h1>
+    <span id="count" title="total items">0</span>
+  </header>
+
+  <nav class="tabs">
+    <button id="tab-notes" class="active">Notes</button>
+    <button id="tab-words">Words</button>
+    <button id="tab-hl">Highlights</button>
+  </nav>
+
+  <div id="view-main">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search..." autocomplete="off" />
+      <select id="tagFilter" title="Filter by tag">
+        <option value="">All tags</option>
+      </select>
+    </div>
+    <label class="pin-filter"><input type="checkbox" id="pinnedOnly" /> Pinned only</label>
+
+    <form id="editor">
+      <input type="hidden" id="editId" />
+      <!-- notes fields -->
+      <div id="fields-notes">
+        <input id="noteTitle" placeholder="Note title" maxlength="120" />
+        <textarea id="noteBody" placeholder="Write note..." rows="3"></textarea>
+        <textarea id="noteDesc" placeholder="Description (optional)..." rows="2"></textarea>
+      </div>
+      <!-- words fields -->
+      <div id="fields-words" hidden>
+        <input id="wordTerm" placeholder="Word" maxlength="120" />
+        <input id="wordMeaning" placeholder="Meaning" maxlength="300" />
+        <textarea id="wordExample" placeholder="Example sentence (optional)" rows="2"></textarea>
+        <textarea id="wordDesc" placeholder="Description (optional)..." rows="2"></textarea>
+      </div>
+      <input id="tags" placeholder="tags: comma separated (e.g. work, idea)" maxlength="200" />
+      <div class="row">
+        <button type="submit" id="saveBtn">Add</button>
+        <button type="button" id="cancelBtn" hidden>Cancel</button>
+      </div>
+    </form>
+
+    <ul id="list"></ul>
+    <p id="empty">Nothing yet. Add your first item above.</p>
+  </div>
+
+  <div id="view-hl" hidden>
+    <p style="color:#888;font-size:12px;margin:4px 0">Select text on any page → pick a color. Shift-click a highlight to delete it.</p>
+    <ul id="hlList"></ul>
+    <p id="hlEmpty">No highlights yet.</p>
+  </div>
+
+  <footer>
+    <button id="exportBtn" title="Download JSON backup">Export</button>
+    <label class="import-label" title="Restore from JSON">Import<input id="importFile" type="file" accept=".json,application/json" hidden /></label>
+    <button id="wipeBtn" class="danger" title="Delete current tab items">Clear tab</button>
+  </footer>
+</section>
+
+<script src="popup-ocr.js"></script>
+<script src="popup-notes.js"></script>
+<script src="popup-tabs.js"></script>
+</body>
+</html>

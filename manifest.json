@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Lens OCR + Local Notes & Words",
+  "version": "1.3.0",
+  "description": "Google Lens-like OCR (image/screenshot/region) + offline notes, words and page highlights. 100% local.",
+  "permissions": ["activeTab", "scripting", "contextMenus", "tabs", "storage", "clipboardWrite"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "OCR + Notes"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["highlighter.js"],
+      "css": ["highlighter.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/*", "viewer.html", "content-region.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
